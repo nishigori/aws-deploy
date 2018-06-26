@@ -1,0 +1,26 @@
+# VERSIONs declaration that loading from Makefile
+# - version numbers is without "v" prefix
+
+# https://pypi.org/project/docker-compose/
+DOCKER_COMPOSE_VERSION=1.21.2
+
+# https://pypi.org/project/awscli/
+AWSCLI_VERSION=1.15.45
+
+# https://pypi.org/project/aws-sam-cli/
+AWS_SAM_CLI_VERSION=0.4.0
+
+# https://github.com/apex/apex/releases
+APEX_VERSION=1.0.0-rc3
+
+# https://github.com/aws/amazon-ecs-cli/releases
+ECS_CLI_VERSION=1.6.0
+
+# https://github.com/silinternational/ecs-deploy/releases
+ECS_DEPLOY_VERSION=3.4.0
+
+# https://github.com/kayac/ecspresso/releases
+ECSPRESSO_VERSION=0.6.2
+
+# https://pypi.org/project/awslogs/
+AWSLOGS_VERSION=0.10.0
