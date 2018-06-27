@@ -45,8 +45,9 @@ RUN curl -o /usr/local/bin/ecs-deploy https://raw.githubusercontent.com/silinter
 
 # https://github.com/aws/amazon-ecs-cli#installing
 ARG ECS_CLI_VERSION
-RUN apk add --no-cache gnupg \
-        && gpg --keyserver hkp://keys.gnupg.net --recv BCE9D9A42D51784F \
+RUN set -x \
+        && apk add --no-cache gnupg \
+        && (gpg --keyserver hkp://keys.gnupg.net --recv BCE9D9A42D51784F || gpg --keyserver hkp://keys.gnupg.net --recv BCE9D9A42D51784F) \
         && curl https://raw.githubusercontent.com/aws/amazon-ecs-cli/v${ECS_CLI_VERSION}/amazon-ecs-public-key.gpg | gpg --import \
         && curl -o /root/.gnupg/ecs-cli.asc https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-v${ECS_CLI_VERSION}.asc \
         && curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-v${ECS_CLI_VERSION} \
