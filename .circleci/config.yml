@@ -1,0 +1,26 @@
+version: 2
+
+workflows:
+  version: 2
+  main:
+    jobs:
+      - build
+
+jobs:
+  build:
+    docker:
+      - image: docker:stable-git
+    steps:
+      - checkout
+      - setup_remote_docker:
+          docker_layer_caching: true
+      - run: apk add --update --no-cache bash make
+      - run:
+          name: "Build Docker Images"
+          command: make check image
+      - deploy:
+          name: "Publish Docker Images"
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              make push
+            fi
