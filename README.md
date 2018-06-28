@@ -1,11 +1,13 @@
 # Docker image includes a lot of aws deployment tools
 
-[![CircleCI][circleci-badge]][circleci-link] [![GitHub License][license-badge]][license-link]
+[![CircleCI][circleci-badge]][circleci-link] [![Docker Hub][dockerhub-badge]][dockerhub-link] [![GitHub License][license-badge]][license-link]
 
-[circleci-badge]: https://circleci.com/gh/nishigori/aws-deploy.svg?style=svg
-[circleci-link]:  https://circleci.com/gh/nishigori/aws-deploy
-[license-badge]:  https://img.shields.io/badge/license-MIT-blue.svg
-[license-link]:   https://raw.githubusercontent.com/nishigori/aws-deploy/master/LICENSE
+[circleci-badge]:  https://circleci.com/gh/nishigori/aws-deploy.svg?style=svg
+[circleci-link]:   https://circleci.com/gh/nishigori/aws-deploy
+[license-badge]:   https://img.shields.io/badge/license-MIT-blue.svg
+[license-link]:    https://raw.githubusercontent.com/nishigori/aws-deploy/master/LICENSE
+[dockerhub-badge]: https://img.shields.io/docker/stars/nishigori/aws-deploy.svg
+[dockerhub-link]:  https://hub.docker.com/r/nishigori/aws-deploy/
 
 * [aws-cli](https://pypi.org/project/awscli/)
 * For AWS Lambda
