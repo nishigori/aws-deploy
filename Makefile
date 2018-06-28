@@ -8,8 +8,7 @@ ARCHIVE_NUMBER := $(shell date +%Y%m%d)
 check:
 	docker version
 
-image:
-	-docker pull $(DOCKER_IMAGE)
+image: check pull
 	docker build -t $(DOCKER_IMAGE) \
 		--build-arg=DOCKER_COMPOSE_VERSION=$(DOCKER_COMPOSE_VERSION) \
 		--build-arg=AWSCLI_VERSION=$(AWSCLI_VERSION) \
@@ -20,6 +19,9 @@ image:
 		--build-arg=ECSPRESSO_VERSION=$(ECSPRESSO_VERSION) \
 		--build-arg=AWSLOGS_VERSION=$(AWSLOGS_VERSION) \
 		.
+
+pull:
+	-docker pull $(DOCKER_IMAGE)
 
 push: push_latest
 

@@ -17,7 +17,7 @@ jobs:
       - run: apk add --update --no-cache bash make
       - run:
           name: "Build Docker Images"
-          command: make check image
+          command: make image
       - deploy:
           name: "Publish Docker Images"
           command: |
