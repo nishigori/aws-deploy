@@ -25,33 +25,31 @@ ARG ECS_DEPLOY_VERSION
 ARG ECS_CLI_VERSION
 
 RUN set -ex; \
-# Installing via python pip
         pip3 install --no-cache-dir \
             awscli==${AWSCLI_VERSION} \
             awslogs==${AWSLOGS_VERSION} \
-            aws-sam-cli==${AWS_SAM_CLI_VERSION} \
             docker-compose==${DOCKER_COMPOSE_VERSION} \
         ; \
-        \
+# https://pypi.org/project/aws-sam-cli/
+        apk add --no-cache gcc musl-dev python3-dev \
+            && pip3 install --no-cache-dir aws-sam-cli==${AWS_SAM_CLI_VERSION} \
+        ; \
 # ecspresso
         curl -L -o /usr/local/bin/ecspresso https://github.com/kayac/ecspresso/releases/download/v${ECSPRESSO_VERSION}/ecspresso-v${ECSPRESSO_VERSION}-linux-amd64 \
             && chmod +x /usr/local/bin/ecspresso \
             && ecspresso version \
         ; \
-        \
 # https://github.com/apex/apex#installation
         curl -o install.sh https://raw.githubusercontent.com/apex/apex/master/install.sh \
             && sh ./install.sh ${APEX_VERSION} \
             && rm ./install.sh \
             && apex version \
         ; \
-        \
 # https://github.com/silinternational/ecs-deploy#installation
         curl -o /usr/local/bin/ecs-deploy https://raw.githubusercontent.com/silinternational/ecs-deploy/${ECS_DEPLOY_VERSION}/ecs-deploy \
             && chmod +x /usr/local/bin/ecs-deploy \
             && ecs-deploy --version \
         ; \
-        \
 # https://github.com/aws/amazon-ecs-cli#installing
         apk add --no-cache gnupg \
             && curl https://raw.githubusercontent.com/aws/amazon-ecs-cli/v${ECS_CLI_VERSION}/amazon-ecs-public-key.gpg | gpg --import \
