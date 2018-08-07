@@ -20,7 +20,7 @@ ECS_CLI_VERSION=1.7.0
 ECS_DEPLOY_VERSION=3.5.1
 
 # https://github.com/kayac/ecspresso/releases
-ECSPRESSO_VERSION=0.6.2
+ECSPRESSO_VERSION=0.6.3
 
 # https://pypi.org/project/awslogs/
 AWSLOGS_VERSION=0.10.0
