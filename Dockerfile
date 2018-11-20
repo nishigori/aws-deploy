@@ -1,4 +1,4 @@
-FROM docker:18.09.0-ce
+FROM docker:18.09
 
 # pre-requirements and utilities
 RUN apk update \
