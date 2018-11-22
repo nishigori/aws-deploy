@@ -5,7 +5,7 @@
 DOCKER_COMPOSE_VERSION=1.23.1
 
 # https://pypi.org/project/awscli/
-AWSCLI_VERSION=1.16.59
+AWSCLI_VERSION=1.16.60
 
 # https://pypi.org/project/aws-sam-cli/
 AWS_SAM_CLI_VERSION=0.6.0
