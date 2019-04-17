@@ -52,7 +52,7 @@ RUN set -ex; \
         ; \
 # https://github.com/aws/amazon-ecs-cli#installing
         apk add --no-cache gnupg \
-            && curl https://raw.githubusercontent.com/aws/amazon-ecs-cli/v${ECS_CLI_VERSION}/amazon-ecs-public-key.gpg | gpg --import \
+            && curl https://raw.githubusercontent.com/aws/amazon-ecs-cli/${ECS_CLI_VERSION}/amazon-ecs-public-key.gpg | gpg --import \
             && curl -o /root/.gnupg/ecs-cli.asc https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-v${ECS_CLI_VERSION}.asc \
             && curl -o /usr/local/bin/ecs-cli https://s3.amazonaws.com/amazon-ecs-cli/ecs-cli-linux-amd64-v${ECS_CLI_VERSION} \
             && gpg --verify /root/.gnupg/ecs-cli.asc /usr/local/bin/ecs-cli \
