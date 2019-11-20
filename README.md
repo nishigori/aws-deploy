@@ -19,7 +19,6 @@
   * [silinternational/ecs-deploy](https://github.com/silinternational/ecs-deploy)
 * Misc
   * [awslogs](https://pypi.org/project/awslogs/)
-  * [docker-compose](https://pypi.org/project/docker-compose/)
 
 The above libraries version is written in *install_versions.txt*
 
