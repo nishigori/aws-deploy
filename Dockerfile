@@ -52,28 +52,26 @@ RUN set -ex; \
             "$ALPINE_GLIBC_BIN_PACKAGE_FILENAME" \
             "$ALPINE_GLIBC_I18N_PACKAGE_FILENAME"
 
-ARG AWSCLI_VERSION
+# Currently AWS_CLI cannot version specify
+#ARG AWSCLI_VERSION
 ARG AWSLOGS_VERSION
 ARG AWS_SAM_CLI_VERSION
 ARG ECSPRESSO_VERSION
-ARG APEX_VERSION
 ARG ECS_DEPLOY_VERSION
 ARG ECS_CLI_VERSION
 
 RUN set -ex; \
-        pip3 install --no-cache-dir \
-            awscli==${AWSCLI_VERSION} \
-            awslogs==${AWSLOGS_VERSION} \
-        ; \
+        : "awscli v2"; \
+        curl -s "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o awscliv2.zip \
+            && unzip awscliv2.zip \
+            && ./aws/install \
+            && aws --version \
+            && rm -rf awscliv2.zip ./aws ; \
+        : "awslogs https://pypi.org/project/awslogs/"; \
+        pip3 install --no-cache-dir awslogs==${AWSLOGS_VERSION}; \
         : "https://pypi.org/project/aws-sam-cli/"; \
         apk add --no-cache gcc musl-dev python3-dev \
             && pip3 install --no-cache-dir aws-sam-cli==${AWS_SAM_CLI_VERSION} \
-        ; \
-        : "https://github.com/apex/apex#installation"; \
-        curl -o install.sh https://raw.githubusercontent.com/apex/apex/master/install.sh \
-            && sh ./install.sh ${APEX_VERSION} \
-            && rm ./install.sh \
-            && apex version \
         ; \
         : "ecspresso"; \
         curl -L -o /usr/local/bin/ecspresso https://github.com/kayac/ecspresso/releases/download/v${ECSPRESSO_VERSION}/ecspresso-v${ECSPRESSO_VERSION}-linux-amd64 \
